@@ -2,8 +2,23 @@
 
 /** @var yii\web\View $this */
 
+use hoomanMirghasemi\jdf\Jdf;
+
 $this->title = 'My Yii Application';
 ?>
+
+<?php
+$shamsi = Jdf::jdate('Y-m-d'); // 1402-02-18
+$shamsiArr = explode('-', $shamsi); // array:  { [0] => "1402", [1] => "02", [2] => "18"] }
+$miladiArr = Jdf::jalali_to_gregorian($shamsiArr[0], $shamsiArr[1], $shamsiArr[2]); // array:  { [0] => 2023, [1] => 5, [2] => 8] }
+$miladi = implode('-', $miladiArr); // 2023-5-8
+
+var_dump($shamsi); echo '<br>';
+var_dump($shamsiArr); echo '<br>';
+var_dump($miladiArr); echo '<br>';
+var_dump($miladi);
+?>
+
 <div class="site-index">
     <div class="p-5 mb-4 bg-transparent rounded-3">
         <div class="container-fluid py-5 text-center">
